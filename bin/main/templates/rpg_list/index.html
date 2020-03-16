@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel='stylesheet' type='text/css' href='/css/common.css'>
+<style type="text/css">
+</style>
+<title>Insert title here</title>
+<!-- ヘッダーHTML読み込み -->
+<th:block th:include="/common/header :: common-header"></th:block>
+</head>
+<body>
+	<table class="table table-hover table-sm table-striped text-nowrap"
+		id="game-table">
+
+		<tbody>
+			<tr th:id="${gameWork.gameId}" class="selection"
+				th:each="gameWork:${gameList}">
+
+				<td>
+					<div class="card"
+						style="border: 1.3px solid #888888; border-radius: 10px; filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));">
+
+						<div class="card-header">
+							<h6 th:text="${gameWork.title}" style="display: inline-block">タイトル</h6>
+
+						</div>
+						<div class="card-body">
+							<div class="font-weight-bold" th:text="${gameWork.gameModel}">機種</div>
+						</div>
+					</div>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<!-- 以下javascript -->
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript">
+		$("#game-table tbody tr").click(function() {
+			var id = $(this).attr("id");
+			location.href = 'game' + id
+		});
+	</script>
+</body>
+</html>

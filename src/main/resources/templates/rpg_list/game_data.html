@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- ヘッダーHTML読み込み -->
+<th:block th:include="/common/header :: common-header"></th:block>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<body>
+	<nav class="navbar navbar-dark bg-secondary pt-1 pb-1">
+		<span class="navbar-brand" style="font-size: 15px;">ゲーム詳細</span>
+	</nav>
+
+
+    <form action="rental" th:object="${game}" method="post">
+		<input type="hidden" th:field="*{gameId}">
+
+
+		<div class="card">
+			<div class="card-body">
+
+				<!-- <img width="150" style="float: left;"
+					class="align-self-start ml-1 mr-3"
+					th:src="'data:image/jpeg;base64,'+*{imageUrl}"
+					alt="Generic placeholder image"> -->
+
+				<div class="form-group baseline " style="padding-left: 180px;">
+					<h3 th:text="*{title}">ゲームタイトル</h3>
+					<div class="text-danger">
+						<!-- <a th:text="【+*{nowStatus}+】">【レンタル中】</a> -->
+					</div>
+					<br>
+					<div class="form-group">
+						<a th:text="機種：+*{gameModel}">機種</a>
+					</div>
+					<!-- <div class="form-group">
+						<a th:text="入荷日：+*{arrivalDay}">入荷日:yyyy/MM/dd</a>
+					</div> -->
+					<div class="form-group">
+						<!-- <a>レビュー：</a> <a class="text-primary"
+							th:href="@{/reviewRegist{id}(id=*{bookId})}"
+							th:text="*{reviewSize}+件のレビュー">レビュー：10件のレビュー</a> -->
+					</div>
+				</div>
+
+				<br>
+
+				<div class="form-group">
+					<h5>説明</h5>
+				</div>
+				<div class="form-group">
+					<a th:text="*{story}">ストーリー</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	<table class="table table-borderless">
+		<tr>
+			<th><a class="navbar-brand" th:href="@{/caracter}">キャラクターを追加する</a></th>
+		</tr>
+		 <tbody>
+			<tr th:id="${gameCaracter.gameId}" th:each="gameCaracter: ${caracter}"
+				class="selection">
+				<td th:if="!${gameCaracter.caraName == '' }">
+					<div th:text="*{gameCaracter.caraName}"></div>
+					<div th:text="*{gameCaracter.caraOverview}">レビュータイトル</div>
+					<div th:text="*{gameCaracter.appearanceWork}">レビューの内容が表示されます。</div>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+	<table class="table table-borderless">
+		<tr>
+			<th><a class="navbar-brand" th:href="@{/review}">レビューを書く</a></th>
+		</tr>
+		<tbody>
+			<tr th:id="${gameReview.gameId}" th:each="gameReview: ${review}"
+				class="selection">
+				<td th:if="!${gameReview.review == '' }">
+					<div th:text="*{gameReview.gameId}+さん">さん</div>
+					<div th:text="*{gameReview.reviewTitle}">レビュータイトル</div>
+					<!-- <div th:text="投稿日：+*{bookReview.reviewDay}"
+						th:if="!${bookReview.reviewDay == '' }">投稿日:yyyy/MM/dd</div> -->
+					<div th:text="*{gameReview.review}">レビューの内容が表示されます。</div>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+</body>
+</html>

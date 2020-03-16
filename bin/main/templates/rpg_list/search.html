@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- ヘッダーHTML読み込み -->
+<th:block th:include="/common/header :: common-header"></th:block>
+</head>
+<body>
+	<form action="searchValue" th:object="${searchValue}" method="post"
+		enctype="multipart/form-data">
+		<!-- 	<input type="hidden" th:field="*{gameId}"> -->
+
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<input type="text" class=" form-control">
+					</div>
+					<button type="submit" name="title" value="タイトル検索"
+						class="btn btn-primary btn-block">タイトル検索</button>
+
+				</div>
+				<br>
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<input type="text" id="text2" class=" form-control ">
+					</div>
+					<button type="submit" name="cara" value="キャラクター検索"
+						class="btn btn-primary btn-block">キャラクター検索</button>
+				</div>
+				<br>
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<input type="text" id="text2" class=" form-control ">
+					</div>
+					<button type="submit" name="free" value="フリーワード検索"
+						class="btn btn-primary btn-block">フリーワード検索</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body"></div>
+		</div>
+	</form>
+	<a class="navbar-brand" th:href="@{/top}">TOP</a>
+</body>
+</html>

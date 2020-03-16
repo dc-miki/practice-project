@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>作品編集</title>
+<!-- ヘッダーHTML読み込み -->
+<th:block th:include="/common/header :: common-header"></th:block>
+</head>
+<body>
+<form action="/update" th:object="${form}" method="post"
+		enctype="multipart/form-data">
+	 	<input type="hidden" th:field="*{gameId}">
+
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group row">
+					<label for="inputIsbn" class="col-sm-2 col-form-label" >作品タイトル<span
+						class="text-danger"></span></label>
+					<div class="col-sm-10">
+						<input type="text" class=" form-control" th:field=" *{title}">
+					</div>
+					<!-- <div class="col-sm-10">
+						<input type="text" th:field="{isbn}" th:errorclass="fieldError">
+
+					</div> -->
+				</div>
+				<div class="form-group row">
+					<label for="inputBookName" class="col-sm-2 col-form-label">発売日<span
+						class="text-danger"></span></label>
+					<div class="col-sm-10">
+						<input type="text" id="text1" class=" form-control" th:field=" *{releaseDate}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputTags" class="col-sm-2 col-form-label">発売メーカー<span
+						class="text-danger"></span></label>
+					<div class="col-sm-10">
+						<input type="text" id="text2" class=" form-control " th:field=" *{sellingAgency}">
+					</div>
+					<div class="form-group row">
+					<label for="inputTags" class="col-sm-2 col-form-label" >機種<span
+						class="text-danger"></span></label>
+					<div class="col-sm-10">
+						<input type="text" id="text2" class=" form-control " th:field=" *{gameModel}">
+					</div>
+
+				</div>
+				<div class="form-group row">
+					<label for="inputBookDescription" class="col-sm-2 col-form-label">ストーリー<span
+						class="text-danger"></span></label>
+					<div class="col-sm-10">
+						<textarea id="textarea1" class=" form-control " th:field=" *{story}"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="card">
+		<div class="card-body">
+		</div>
+		</div>
+		<button type="submit" name="new" value="保存"
+			class="btn btn-primary btn-block">保存</button>
+		<button type="submit" name="delete" value="削除"
+			class="btn btn-secondary btn-block" >削除</button>
+</form>
+<a class="navbar-brand" th:href="@{/top}">TOP</a>
+</body>
+</html>
