@@ -49,7 +49,7 @@ dependencies {
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("net.sourceforge.nekohtml:nekohtml:1.9.22")
-    header("Content-Type: application/json; charset=utf-8");
+    //header("Content-Type: application/json; charset=utf-8");
 
 test {
 	useJUnitPlatform()

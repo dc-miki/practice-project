@@ -59,7 +59,7 @@
 	</form>
 	<table class="table table-borderless">
 		<tr>
-			<th><a class="navbar-brand" th:href="@{/caracter}">キャラクターを追加する</a></th>
+			<th><a class="navbar-brand" th:href="@{/caracter{id}(id=${game.gameId})}">キャラクターを追加する</a></th>
 		</tr>
 		 <tbody>
 			<tr th:id="${gameCaracter.gameId}" th:each="gameCaracter: ${caracter}"
@@ -75,7 +75,7 @@
 	</table>
 	<table class="table table-borderless">
 		<tr>
-			<th><a class="navbar-brand" th:href="@{/review}">レビューを書く</a></th>
+			<th><a class="navbar-brand" th:href="@{/review{id}(id=${game.gameId})}">レビューを書く</a></th>
 		</tr>
 		<tbody>
 			<tr th:id="${gameReview.gameId}" th:each="gameReview: ${review}"

@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.bean.GameDataBean;
 import com.example.demo.bean.GameViewBean;
+import com.example.demo.form.CaracterForm;
 import com.example.demo.form.GameForm;
+import com.example.demo.form.ReviewForm;
+import com.example.demo.service.CaracterService;
 import com.example.demo.service.GameService;
 
 import lombok.RequiredArgsConstructor;
@@ -31,6 +34,9 @@ public class RpgSearchController {
 
 	@Autowired
 	private final GameService gameService;
+
+	@Autowired
+	private final CaracterService caraService;
 
 
 	/**
@@ -108,8 +114,8 @@ public class RpgSearchController {
 		 * @return
 		 * @throws IOException
 		 */
-		@RequestMapping(value = "/update", params = "new", method = RequestMethod.POST)
-		public String newData(@Validated GameForm form, BindingResult result, Model model) throws IOException {
+		@RequestMapping(value="/update", method = RequestMethod.POST)
+		public String newData(@Validated GameForm form, BindingResult result, Model model) {
 
 			if (result.hasErrors()) {
 				return "rpg_list/edit";
@@ -126,24 +132,50 @@ public class RpgSearchController {
 		 * @param model
 		 * @param bookId
 		 */
-		@RequestMapping("/caracter") //http://localhost:8080/cms/edit
-		public String caraRegist(Model model) {
+		@RequestMapping("/caracter{id}") //http://localhost:8080/cms/edit
+		public String caraRegist(@PathVariable(name = "id", required = true) int gameId,Model model) {
+
+			CaracterForm form = new CaracterForm();
+			model.addAttribute("form", form);
 
 			return "common/caracter_regist";
 		}
 
 		/**
-		 * キャラクター登録画面表示
+		 * レビュー登録画面表示
 		 * @return
 		 * @param model
 		 * @param bookId
 		 */
-		@RequestMapping("/review") //http://localhost:8080/cms/edit
-		public String caraReview(Model model) {
+		@RequestMapping("/review{id}") //http://localhost:8080/cms/edit
+		public String caraReview(@PathVariable(name = "id", required = true) int gameId,Model model) {
+
+			ReviewForm form = new ReviewForm();
+			model.addAttribute("form", form);
 
 			return "common/review_regist";
+
+
 		}
 
+
+		/**
+		 * キャラクター登録処理命令
+		 *
+		 * @return
+		 * @throws IOException
+		 */
+		@RequestMapping(value="/caraUpdate", method = RequestMethod.POST)
+		public String caraNewData(@Validated CaracterForm form, BindingResult result, Model model) {
+
+			if (result.hasErrors()) {
+				return "rpg_list/edit";
+			}
+
+			caraService.update(form);
+			return "redirect:/index";
+
+		}
 
 		/**
 		 * 検索画面表示

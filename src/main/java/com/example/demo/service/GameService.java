@@ -22,10 +22,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GameService {
 
+	//GameWorkのリポジトリ
 	private final DemoRepository demoRepository;
 
+	//GameReviewのリポジトリ
 	private final ReviewRepository reviewRepository;
 
+	//GameCaraのリポジトリ
 	private final CaraRepository caraRepository;
 
 	/**
