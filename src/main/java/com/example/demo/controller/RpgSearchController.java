@@ -77,8 +77,8 @@ public class RpgSearchController {
 			model.addAttribute("game", game);
 
 			//ゲームレビュー取得
-			List<GameDataBean> review = gameService.getReview(gameId);
-			model.addAttribute("review", review);
+		    List<GameDataBean> review = gameService.getReview(gameId);
+		    model.addAttribute("review", review);
 
             //ゲームキャラクター取得
 			List<GameDataBean> caracter = gameService.getCaracter(gameId);
