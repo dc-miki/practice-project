@@ -62,8 +62,7 @@ public class RpgSearchController {
 	}
 
 
-
-	//書籍一覧画面
+	//ゲーム作品一覧画面
 		/**
 		 * 書籍一覧表示処理
 		 * @param model Model
@@ -126,7 +125,7 @@ public class RpgSearchController {
 		 * @throws IOException
 		 */
 		@RequestMapping(value="/update", method = RequestMethod.POST)
-		public String newData(@Validated GameForm form, BindingResult result, Model model) {
+		public String newData(@Validated GameForm form, BindingResult result, Model model) throws IOException {
 
 			if (result.hasErrors()) {
 				return "rpg_list/edit";

@@ -4,11 +4,9 @@
 <meta charset="UTF-8">
 <link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
 <style type="text/css"></style>
-<title>Insert title here</title>
+<title>RPG Search</title>
 <!-- ヘッダーHTML読み込み -->
 <th:block th:include="/common/header :: common-header"></th:block>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 <body>
@@ -24,10 +22,10 @@
 		<div class="card">
 			<div class="card-body">
 
-				<!-- <img width="150" style="float: left;"
+				<img width="150" style="float: left;"
 					class="align-self-start ml-1 mr-3"
 					th:src="'data:image/jpeg;base64,'+*{imageUrl}"
-					alt="Generic placeholder image"> -->
+					alt="Generic placeholder image">
 
 				<div class="form-group baseline " style="padding-left: 180px;">
 					<h3 th:text="*{title}">ゲームタイトル</h3>
@@ -59,6 +57,7 @@
 			</div>
 		</div>
 	</form>
+
 	<table class="table table-borderless">
 		<tr>
 			<th><a class="navbar-brand" th:href="@{/caracter{id}(id=${game.gameId})}">キャラクターを追加する</a></th>

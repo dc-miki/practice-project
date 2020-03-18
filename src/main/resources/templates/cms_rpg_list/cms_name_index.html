@@ -9,9 +9,21 @@
 </style>
 <title>RPG Search</title>
 <!-- ヘッダーHTML読み込み -->
-<th:block th:include="/common/header :: common-header"></th:block>
-</head>
 <body>
+	<nav class="navbar navbar-dark bg-secondary pt-1 pb-1">
+		<span class="navbar-brand" style="font-size: 15px;">登録作品編集・削除</span>
+		<form class="form-inline" action="searchReview" th:object="${form}"
+			method="get">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="タイトルで検索">
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-default">検索</button>
+				</span>
+			</div>
+
+
+		</form>
+	</nav>
 	<table class="table table-hover table-sm table-striped text-nowrap"
 		id="game-table">
 
@@ -36,6 +48,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<a class="navbar-brand" th:href="@{/after_top}">TOP</a>
 	<!-- 以下javascript -->
 	<script type="text/javascript" src="/js/common.js"></script>
 	<script type="text/javascript">

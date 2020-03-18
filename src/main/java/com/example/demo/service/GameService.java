@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.bean.GameDataBean;
@@ -66,6 +68,7 @@ public class GameService {
 		bean.setTitle(game.getTitle());//タイトル
 		bean.setGameModel(game.getGameModel());//機種
 		bean.setStory(game.getStory());//ストーリー
+		bean.setImageUrl(game.getImageUrl());//画像
 
 		return bean;
 	}
@@ -86,6 +89,7 @@ public class GameService {
 			bean.setReviewTitle(list.getReviewTitle());//タイトル
 			bean.setReview(list.getReview());//レビュー
 			bean.setEvaluation(list.getEvaluation());//評価
+
 
 			gameDataBean.add(bean);
 		}
@@ -117,8 +121,9 @@ public class GameService {
 	/**
 	 * ゲーム登録
 	 * @param form
+	 * @throws IOException
 	 */
-	public void update(GameForm form) {
+	public void update(GameForm form) throws IOException {
 
 
 			GameWork game = new GameWork();
@@ -130,6 +135,13 @@ public class GameService {
 			game.setSellingAgency(form.getSellingAgency());//発売元
 			game.setStory(form.getStory());//入荷日
 			game.setRegistrationDate(LocalDateTime.now());//登録日
+
+			try {
+				game.setImageUrl(Base64.encodeBase64String(form.getImage().getBytes()));//画像URL
+			}catch (NullPointerException i) {
+				game.setImageUrl(null);
+			}
+
 
 			demoRepository.save(game);
 	}
