@@ -23,9 +23,10 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				    .and()
 				    // LOGIN
 				*/ .formLogin()
-				/* */.defaultSuccessUrl("/top")
+				/* */.defaultSuccessUrl("/after_top")
 		// end
 		;
 	}
+
 
 }

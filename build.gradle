@@ -48,13 +48,15 @@ dependencies {
     runtime('mysql:mysql-connector-java')
     compileOnly('org.projectlombok:lombok')
     compile('org.apache.commons:commons-lang3:3.7')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    //testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("net.sourceforge.nekohtml:nekohtml:1.9.22")
+    //header("Content-Type: application/json; charset=utf-8");
+
+    //jQueryとbootstrap読み込み
     compile('org.webjars:jquery:3.3.1')
     compile('org.webjars:jquery-ui:1.12.1')
     compile('org.webjars:bootstrap:4.2.1')
-    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    compile("net.sourceforge.nekohtml:nekohtml:1.9.22")
-    //header("Content-Type: application/json; charset=utf-8");
 
 test {
 	useJUnitPlatform()

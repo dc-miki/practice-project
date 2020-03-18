@@ -38,9 +38,20 @@ public class RpgSearchController {
 	@Autowired
 	private final CaracterService caraService;
 
+	/**
+	 * ログイン後画面初期表示処理
+	 * @param model Model
+	 * @return
+	 */
+	@RequestMapping("/after_top")
+	public String afterLogin(Model model) {
+
+		return "rpg_list/after_login";
+	}
+
 
 	/**
-	 * 書籍一覧初期表示処理
+	 * トップページ初期表示処理
 	 * @param model Model
 	 * @return
 	 */
