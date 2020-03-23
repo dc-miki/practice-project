@@ -199,5 +199,17 @@ public class RpgSearchController {
 			return "rpg_list/search";
 		}
 
+		/**
+		 * 検索画面表示
+		 * @return
+		 * @param model
+		 * @param bookId
+		 */
+		@RequestMapping("/searchValue") //http://localhost:8080/cms/edit
+		public String searchValue(Model model) {
+
+			return "rpg_list/search";
+		}
+
 
 }

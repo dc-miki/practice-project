@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
 <style type="text/css">
-.jumbotron { background:url(city-1134141_1920.jpg) center no-repeat; background-size: cover;}
+.jumbotron {
+background-image:url("images/siro.jpg") ;
+background-size: cover;
+}
 </style>
 <title>RPG Search</title>
 </head>
@@ -20,5 +23,16 @@
       </div>
     </div>
 <!--　▲ ジャンボトロン　 -->
+<div class="container" >
+			<ul class="mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/index}">作品一覧</a>
+				</li>
+
+				<li class="nav-item"><a class="nav-link" th:href="@{/search}">検索<span
+						class="badge badge-pill badge-danger"></span></a></li>
+
+			</ul>
+		</div>
+
 </body>
 </html>

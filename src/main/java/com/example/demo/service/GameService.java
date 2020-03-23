@@ -80,20 +80,27 @@ public class GameService {
 	public List<GameDataBean> getReview(int gameId) {
 
 		List<GameReview> reviewList = reviewRepository.findById(gameId);
-
 		List<GameDataBean> gameDataBean = new ArrayList<GameDataBean>();
-
-		for (GameReview list : reviewList) {
+		if(reviewList.get(gameId)==null) {
 			GameDataBean bean = new GameDataBean();
-			bean.setGameId(list.getGameId());//ゲームID
-			bean.setReviewTitle(list.getReviewTitle());//タイトル
-			bean.setReview(list.getReview());//レビュー
-			bean.setEvaluation(list.getEvaluation());//評価
+
+		}else {
 
 
-			gameDataBean.add(bean);
+			for (GameReview list : reviewList) {
+				GameDataBean bean = new GameDataBean();
+				bean.setGameId(list.getGameId());//ゲームID
+				bean.setReviewTitle(list.getReviewTitle());//タイトル
+				bean.setReview(list.getReview());//レビュー
+				bean.setEvaluation(list.getEvaluation());//評価
+
+
+				gameDataBean.add(bean);
+			}
+
 		}
 		return gameDataBean;
+
 	}
 
 	/**
