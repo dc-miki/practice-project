@@ -58,6 +58,10 @@ dependencies {
     compile('org.webjars:jquery-ui:1.12.1')
     compile('org.webjars:bootstrap:4.2.1')
 
+    //ThymeleafとSpringSecurityを連携する
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+
 test {
 	useJUnitPlatform()
 }

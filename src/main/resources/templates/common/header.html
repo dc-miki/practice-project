@@ -1,53 +1,56 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
 <style type="text/css"></style>
+
 </head>
 <body>
 <!-- HEADER -->
-<th:block th:fragment="common-header">
- <nav class="navbar navbar-expand-sm  sticky-top" >
-    <a class="navbar-brand" th:href="@{/after_top}">RPG Search</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
-        <span class="navbar-toggler-icon"></span><span class="badge badge-pill badge-danger">!</span>
-    </button>
+	<th:block th:fragment="common-header">
+		<nav class="navbar navbar-expand-sm  sticky-top">
+			<a class="navbar-brand" th:href="@{/after_top}">RPG Search</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navb">
+				<span class="navbar-toggler-icon"></span><span
+					class="badge badge-pill badge-danger">!</span>
+			</button>
 
 
-    <div class="collapse navbar-collapse" id="navb" >
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/index}">作品一覧</a>
-            </li>
+			<div class="collapse navbar-collapse" id="navb">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{/index}">作品一覧</a>
+					</li>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/edit}">登録<span class="badge badge-pill badge-danger" ></span></a>
-            </li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/edit}">登録<span
+							class="badge badge-pill badge-danger"></span></a></li>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/search}">検索<span class="badge badge-pill badge-danger"></span></a>
-            </li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/search}">検索<span
+							class="badge badge-pill badge-danger"></span></a></li>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/logout}">ログアウト<span class="badge badge-pill badge-danger"></span></a>
-            </li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+						role="button" aria-expanded="false" aria-haspopup="true" href="#"
+						data-toggle="dropdown"> [[${#httpServletRequest.remoteUser}]]
+					</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/admin}">登録情報管理</a> <a
+								class="dropdown-item" th:href="@{/logout}">ログアウト</a>
+						</div></li>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin}">【管理者画面】<span class="badge badge-pill badge-danger"></span></a>
-            </li>
+					<li class="nav-item"><i class="fas fa-robot"></i></li>
 
-            <li class="nav-item">
-                <i class="fas fa-robot"></i>
-            </li>
-
-        </ul>
-    </div>
-</nav>
-</th:block>
-<script type="text/javascript" src="/js/common.js"></script>
+				</ul>
+			</div>
+		</nav>
+	</th:block>
+	<script type="text/javascript" src="/js/common.js"></script>
 </body>
 </html>

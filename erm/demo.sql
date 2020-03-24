@@ -57,6 +57,8 @@ CREATE TABLE user
 	user_name varchar(70) NOT NULL,
 	master int NOT NULL,
 	registration_date datetime NOT NULL,
+	password varchar(50) NOT NULL,
+	e_mail varchar(255),
 	PRIMARY KEY (user_id)
 );
 
