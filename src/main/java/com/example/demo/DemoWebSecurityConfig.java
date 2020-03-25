@@ -33,6 +33,8 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/after_top")
 				//認証失敗時の遷移先URLは/login-error
 				.failureUrl("/login-error")
+				//ログイン認証を行う先指定
+				.loginProcessingUrl("/authenticate")
 				//userNameのパラメータをuserNameとする
 				.usernameParameter("userName")
 				//passwordのパラメータをpasswordとおく

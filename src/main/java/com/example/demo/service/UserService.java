@@ -34,9 +34,11 @@ public class UserService {
 		user.setPassword(passwordEncoder.encode(userForm.getPassword()));//パスワード
 		user.setMaster(2);//ユーザー種別:2(利用者)
 		user.setEMail(userForm.getEMail());//メールアドレス
-		user.setRegistrationDate(LocalDateTime.now());
+		user.setRegistrationDate(LocalDateTime.now());//登録日時
 
 		userRepository.save(user);
 
 	}
+
+
 }
