@@ -2,6 +2,8 @@ package com.example.demo.form;
 
 import java.time.LocalDateTime;
 
+import com.sun.istack.NotNull;
+
 import lombok.Data;
 
 /**
@@ -16,7 +18,15 @@ public class UserForm {
     Integer userId;
 
     /** ユーザー名 */
+    @NotNull
     String userName;
+
+    /** パスワード */
+    @NotNull
+    String password;
+
+    /** E-mailアドレス */
+    String eMail;
 
     /** ユーザー種別 */
     Integer master;

@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -30,15 +33,21 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/after_top")
 				//認証失敗時の遷移先URLは/login-error
 				.failureUrl("/login-error")
+				//userNameのパラメータをuserNameとする
+				.usernameParameter("userName")
+				//passwordのパラメータをpasswordとおく
+	            .passwordParameter("password")
 				//すべてのユーザに対して、ログインページへのアクセスを許す
 				.permitAll();
 		//すべてのユーザは認証されているユーザ以外にアクセスは許さない
 
 		http.authorizeRequests()
 				//認証不要なもの
-				.antMatchers("/css/**", "/images/**", "/js/**", "/", "/login", "/top")
+				.antMatchers("/css/**", "/images/**", "/js/**", "/", "/login", "/top","/user-regist")
 				//それ以外はすべて認証が必要
 				.permitAll()
+	            .antMatchers("/Register").permitAll()
+	            .antMatchers("/Result").permitAll()
 				.anyRequest()
 				.authenticated();
 
@@ -50,5 +59,10 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 				.logoutSuccessUrl("/top");//ログアウト成功時のURL
 	}
+
+	@Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }

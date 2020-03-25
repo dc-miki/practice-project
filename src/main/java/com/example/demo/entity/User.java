@@ -30,6 +30,14 @@ public class User {
     @Column(name = "master")
     Integer master;
 
+    /** パスワード */
+    @Column(name = "password")
+    String password;
+
+    /** e-mail */
+    @Column(name = "e_mail")
+    String eMail;
+
     /** 登録日 */
     @Column(name = "registration_date")
     LocalDateTime registrationDate;
@@ -58,7 +66,7 @@ public class User {
      *
      * @param  the userName
      */
-    public void setuserName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -105,6 +113,42 @@ public class User {
      */
     public LocalDateTime getRegistrationDate() {
         return registrationDate;
+    }
+
+    /**
+     * Sets the password.
+     *
+     * @param  the password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Returns the password.
+     *
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the eMail.
+     *
+     * @param  the eMail
+     */
+    public void setEMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    /**
+     * Returns the eMail.
+     *
+     * @return the eMail
+     */
+    public String getEMail() {
+        return eMail;
     }
 
 }
