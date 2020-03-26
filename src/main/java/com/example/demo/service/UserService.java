@@ -20,7 +20,7 @@ public class UserService {
 	private final UserRepository userRepository;
 
 	@Autowired
-    PasswordEncoder passwordEncoder;
+	PasswordEncoder passwordEncoder;
 
 	/**
 	 * ユーザー新規登録
