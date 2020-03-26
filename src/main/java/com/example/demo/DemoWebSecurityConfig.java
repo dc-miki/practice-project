@@ -3,7 +3,6 @@ package com.example.demo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,10 +16,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -32,13 +27,11 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				//認証成功時のデフォルト遷移先URは/
 				.defaultSuccessUrl("/after_top")
 				//認証失敗時の遷移先URLは/login-error
-				.failureUrl("/login-error")
-				//ログイン認証を行う先指定
-				.loginProcessingUrl("/authenticate")
+				//.failureUrl("/login-error")
 				//userNameのパラメータをuserNameとする
-				.usernameParameter("userName")
+				//.usernameParameter("userName")
 				//passwordのパラメータをpasswordとおく
-	            .passwordParameter("password")
+	            //.passwordParameter("password")
 				//すべてのユーザに対して、ログインページへのアクセスを許す
 				.permitAll();
 		//すべてのユーザは認証されているユーザ以外にアクセスは許さない
@@ -67,4 +60,14 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+	/*@Override
+	  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication()
+	      // ユーザ名'user', パスワード'user',ロール'USER'のユーザを追加
+	      .withUser("user").password("user").roles("USER")
+	      .and()
+	      // ユーザ名'admin', パスワード'admin',ロール'ADMIN'のユーザを追加
+	      .withUser("admin").password("admin").roles("ADMIN");
+	  }
+	*/
 }

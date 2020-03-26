@@ -1,15 +1,23 @@
 package com.example.demo.service;
 
-import java.io.Serializable;
-import java.util.Collection;
+/*public class UserDetails extends User {
 
-import org.springframework.security.core.GrantedAuthority;
+	//ユーザ情報。
+	private final User user;
 
-public interface UserDetails extends Serializable {
-    String getUsername();
-    String getPassword();
-    boolean isAccountNonLocked();
-    boolean isAccountNonExpired();
-    boolean isCredentialNonExpired();
-    Collection<? extends GrantedAuthority> getAuthorities();
-}
+	public UserDetails(User user,
+			Collection<? extends GrantedAuthority> authorities) {
+		super(user.getUsername(), user.getPassword(),true,true,true,true, authorities);
+		this.user = user;
+	}
+
+
+
+
+
+
+	public User getUser() {
+	    return user;
+	}
+
+}*/

@@ -52,7 +52,7 @@ public class IndexController {
     @RequestMapping(value = "/login-error", method = RequestMethod.GET)
 	public String loginError(Model model) {
 		 model.addAttribute("iserror",true);
-		 return "error/login";
+		 return "error/error";
 	}
 
     /**

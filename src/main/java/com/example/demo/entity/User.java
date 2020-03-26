@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User {
 
+
 	/**ユーザーID */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -150,5 +151,7 @@ public class User {
     public String getEMail() {
         return eMail;
     }
+
+
 
 }
