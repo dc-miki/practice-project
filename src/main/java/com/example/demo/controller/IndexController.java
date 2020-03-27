@@ -87,4 +87,6 @@ public class IndexController {
 		return "error/regist_done";
 
 	}
+
+
 }

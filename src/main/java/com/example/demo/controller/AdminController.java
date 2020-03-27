@@ -42,6 +42,8 @@ public class AdminController {
 		return "cms_rpg_list/admin_top";
 	}
 
+
+
 	/**
 	 * 登録作品編集・削除画面表示処理
 	 * @param model Model

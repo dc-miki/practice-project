@@ -76,7 +76,9 @@ public class DemoWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-
+     /**
+      *ログイン認証処理
+      */
 	 @Override
 	  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	    auth.userDetailsService(userInfoService);
