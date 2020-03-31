@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<style type="text/css">
+</style>
+<title>RPG Search</title>
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-secondary pt-1 pb-1">
+		<span class="navbar-brand" style="font-size: 15px;">登録作品編集・削除</span>
+		<form class="form-inline" action="searchReview" th:object="${form}"
+			method="get">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="タイトルで検索">
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-secondary">検索</button>
+				</span>
+			</div>
+
+
+		</form>
+	</nav>
+	<table class="table table-hover table-sm table-striped text-nowrap"
+		id="game-table">
+
+		<tbody>
+			<tr th:id="${gameWork.gameId}" class="selection"
+				th:each="gameWork:${gameList}">
+
+				<td>
+					<div class="card"
+						style="border: 1.3px solid #888888; border-radius: 10px; filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));">
+
+						<div class="card-header">
+							<h6 th:text="${gameWork.title}" style="display: inline-block">タイトル</h6>
+
+						</div>
+						<div class="card-body">
+							<div class="font-weight-bold" th:text="${gameWork.gameModel}">機種</div>
+						</div>
+					</div>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<a class="navbar-brand" th:href="@{/after_top}">TOP</a>
+	<!-- 以下javascript -->
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript">
+		$("#game-table tbody tr").click(function() {
+			var id = $(this).attr("id");
+			location.href = 'game' + id
+		});
+	</script>
+</body>
+</html>

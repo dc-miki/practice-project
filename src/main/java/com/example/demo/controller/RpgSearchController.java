@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.bean.GameDataBean;
 import com.example.demo.bean.GameViewBean;
+import com.example.demo.form.CaracterForm;
 import com.example.demo.form.GameForm;
+import com.example.demo.form.ReviewForm;
+import com.example.demo.service.CaracterService;
 import com.example.demo.service.GameService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,9 +35,23 @@ public class RpgSearchController {
 	@Autowired
 	private final GameService gameService;
 
+	@Autowired
+	private final CaracterService caraService;
 
 	/**
-	 * 書籍一覧初期表示処理
+	 * ログイン後画面初期表示処理
+	 * @param model Model
+	 * @return
+	 */
+	@RequestMapping("/after_top")
+	public String afterLogin(Model model) {
+
+		return "rpg_list/after_login";
+	}
+
+
+	/**
+	 * トップページ初期表示処理
 	 * @param model Model
 	 * @return
 	 */
@@ -45,8 +62,7 @@ public class RpgSearchController {
 	}
 
 
-
-	//書籍一覧画面
+	//ゲーム作品一覧画面
 		/**
 		 * 書籍一覧表示処理
 		 * @param model Model
@@ -77,8 +93,8 @@ public class RpgSearchController {
 			model.addAttribute("game", game);
 
 			//ゲームレビュー取得
-			List<GameDataBean> review = gameService.getReview(gameId);
-			model.addAttribute("review", review);
+		    List<GameDataBean> review = gameService.getReview(gameId);
+		    model.addAttribute("review", review);
 
             //ゲームキャラクター取得
 			List<GameDataBean> caracter = gameService.getCaracter(gameId);
@@ -108,7 +124,7 @@ public class RpgSearchController {
 		 * @return
 		 * @throws IOException
 		 */
-		@RequestMapping(value = "/update", params = "new", method = RequestMethod.POST)
+		@RequestMapping(value="/update", method = RequestMethod.POST)
 		public String newData(@Validated GameForm form, BindingResult result, Model model) throws IOException {
 
 			if (result.hasErrors()) {
@@ -126,24 +142,50 @@ public class RpgSearchController {
 		 * @param model
 		 * @param bookId
 		 */
-		@RequestMapping("/caracter") //http://localhost:8080/cms/edit
-		public String caraRegist(Model model) {
+		@RequestMapping("/caracter{id}") //http://localhost:8080/cms/edit
+		public String caraRegist(@PathVariable(name = "id", required = true) int gameId,Model model) {
+
+			CaracterForm form = new CaracterForm();
+			model.addAttribute("form", form);
 
 			return "common/caracter_regist";
 		}
 
 		/**
-		 * キャラクター登録画面表示
+		 * レビュー登録画面表示
 		 * @return
 		 * @param model
 		 * @param bookId
 		 */
-		@RequestMapping("/review") //http://localhost:8080/cms/edit
-		public String caraReview(Model model) {
+		@RequestMapping("/review{id}") //http://localhost:8080/cms/edit
+		public String caraReview(@PathVariable(name = "id", required = true) int gameId,Model model) {
+
+			ReviewForm form = new ReviewForm();
+			model.addAttribute("form", form);
 
 			return "common/review_regist";
+
+
 		}
 
+
+		/**
+		 * キャラクター登録処理命令
+		 *
+		 * @return
+		 * @throws IOException
+		 */
+		@RequestMapping(value="/caraUpdate", method = RequestMethod.POST)
+		public String caraNewData(@Validated CaracterForm form, BindingResult result, Model model) {
+
+			if (result.hasErrors()) {
+				return "rpg_list/edit";
+			}
+
+			caraService.update(form);
+			return "redirect:/index";
+
+		}
 
 		/**
 		 * 検索画面表示
@@ -153,6 +195,18 @@ public class RpgSearchController {
 		 */
 		@RequestMapping("/search") //http://localhost:8080/cms/edit
 		public String search(Model model) {
+
+			return "rpg_list/search";
+		}
+
+		/**
+		 * 検索画面表示
+		 * @return
+		 * @param model
+		 * @param bookId
+		 */
+		@RequestMapping("/searchValue") //http://localhost:8080/cms/edit
+		public String searchValue(Model model) {
 
 			return "rpg_list/search";
 		}

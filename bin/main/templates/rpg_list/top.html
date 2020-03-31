@@ -2,13 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- ヘッダーHTML読み込み -->
-<th:block th:include="/common/header :: common-header"></th:block>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
+<style type="text/css">
+.jumbotron { background-image:url(images/siro.jpg) ; background-size: cover;
+background-position: center 30%;}
+</style>
+<title>RPG Search</title>
 </head>
 <body>
-TOP画面です。
+<!--　▼ ジャンボトロン　 -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>RPG Search</h1>
+        RPGゲームの紹介ページです。
+        <a class="btn btn-primary btn-lg" href="#" role="button" th:href="@{/login}">Login »</a>
+      </div>
+    </div>
+<!--　▲ ジャンボトロン　 -->
 </body>
 </html>

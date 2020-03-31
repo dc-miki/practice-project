@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
+<style type="text/css">
+.jumbotron {
+background-image:url("images/siro.jpg") ;
+background-size: cover;
+}
+</style>
+<title>RPG Search</title>
+</head>
+<body>
+<!-- ヘッダーHTML読み込み -->
+<th:block th:include="/common/header :: common-header"></th:block>
+<!--　▼ ジャンボトロン　 -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>ようこそ。</h1>
+        <div>RPGゲームの紹介ページです。</div>
+        <div>上のリンクから行きたいページを選んでください。</div>
+      </div>
+    </div>
+<!--　▲ ジャンボトロン　 -->
+<div class="container" >
+			<ul class="mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/index}">作品一覧</a>
+				</li>
+
+				<li class="nav-item"><a class="nav-link" th:href="@{/search}">検索<span
+						class="badge badge-pill badge-danger"></span></a></li>
+
+			</ul>
+		</div>
+
+</body>
+</html>

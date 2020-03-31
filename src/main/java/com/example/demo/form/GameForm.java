@@ -3,6 +3,8 @@ package com.example.demo.form;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 /**
@@ -18,6 +20,8 @@ public class GameForm {
 
     /** 画像URL */
     String imageUrl;
+
+    MultipartFile image;
 
     /** ゲームタイトル */
     String title;

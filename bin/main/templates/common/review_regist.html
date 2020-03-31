@@ -2,14 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
+<style type="text/css">
+</style>
+<title>RPG Search</title>
 <!-- ヘッダーHTML読み込み -->
 <th:block th:include="/common/header :: common-header"></th:block>
 </head>
 <body>
-  <form action="update" th:object="${game}" method="post"
+  <form action="update" th:object="${form}" method="post"
 		enctype="multipart/form-data">
-	<!-- 	<input type="hidden" th:field="*{gameId}"> -->
+		<input type="hidden" th:field="*{gameId}">
 
 		<div class="card">
 			<div class="card-body">

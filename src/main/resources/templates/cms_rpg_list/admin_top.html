@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='/css/sampleCss.css'>
+<style type="text/css"></style>
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-secondary pt-1 pb-1">
+		<span class="navbar-brand" style="font-size: 15px;">登録情報管理画面</span>
+	</nav>
+
+		<div class="container" >
+			<ul class="mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/cms/edit}">登録作品編集・削除</a>
+				</li>
+
+				<li class="nav-item"><a class="nav-link" th:href="@{/cms/user}">ユーザー情報管理<span
+						class="badge badge-pill badge-danger"></span></a></li>
+
+			</ul>
+		</div>
+		<a class="navbar-brand" th:href="@{/after_top}">TOP</a>
+
+</body>
+</html>
